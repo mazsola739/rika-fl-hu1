@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rika's HW_8</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="gameover" class="hide"></div>
+    <div id="wingame" class="hide"></div>
+    <div id="wingametext" class="hide">It was fun! Do you want to play again?<p>Press Start</p>
+    </div>
+    <div id="playagain" class="hide">Let's play again! =)<p>Press Start</p>
+    </div>
+    <div id="openingtext">Welcome Rika's <span>"Who Wants to Be a Millionaire?"</span> game!<p>Press Start</p>
+    </div>
+    <div id="question-container" class="hide">
+      <div id="questiontext"></div>
+      <div class="btn-grid">
+        <div class="btn answerbtn" id="answer0" data-index="0"></div>
+        <div class="btn answerbtn" id="answer1" data-index="1"></div>
+        <div class="btn answerbtn" id="answer2" data-index="2"></div>
+        <div class="btn answerbtn" id="answer3" data-index="3"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="startbtn" class="btn">Start</button>
+      <button id="skipbtn" class="btn hide">Skip question</button>
+    </div>
+    <div id="result" class="hide">
+      <br><br>
+      <div id="total"></div>
+      <div id="current"></div>
+    </div>
+  </div>
+
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
+  
+</body>
+
+</html>
