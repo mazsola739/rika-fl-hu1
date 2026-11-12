@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280">
+  <title>Book cover</title>
+  <rect width="200" height="280" rx="8" fill="#2b6f8a"/>
+  <rect x="14" width="10" height="280" fill="#1f5469"/>
+  <rect x="44" y="60" width="128" height="10" rx="5" fill="#d0f6ff"/>
+  <rect x="44" y="84" width="96" height="10" rx="5" fill="#d0f6ff"/>
+  <rect x="44" y="200" width="70" height="8" rx="4" fill="#9fd3e3"/>
+</svg>

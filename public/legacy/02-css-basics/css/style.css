@@ -1,0 +1,144 @@
+/* Layout and colors (match examples/final.png, also used for printing) */
+
+.tm-card:nth-child(2) {
+  flex-direction: row-reverse;
+}
+
+.tm-quote:nth-child(2) {
+  quotes: none;
+  font-style: normal;
+  font-size: 17px;
+}
+
+.tm-text-color-primary {
+  color: #666;
+}
+
+.tm-text-color-primary.mb-4 {
+  color: #76cdd8;
+}
+
+.tm-bg-color-primary {
+  background-color: #76cdd8;
+}
+
+.tm-bg-color-secondary {
+  background-color: #019999;
+  border: none;
+}
+
+.pb-5 {
+  font-size: 16px;
+}
+
+.p-5,
+.tm-feature-list {
+  font-size: 17px;
+}
+
+.tm-mb-30 {
+  margin-bottom: 30px;
+}
+
+a,
+.btn {
+  font-style: normal;
+  text-decoration: none;
+}
+
+.btn-primary,
+.btn-secondary {
+  background-color: #019999;
+  border-color: transparent;
+}
+
+.tm-pricing-table {
+  border-color: #019999;
+}
+
+.tm-pricing-discount__star {
+  color: red;
+}
+
+.tm-pricing-discount__text {
+  color: #24d4d4;
+}
+
+.tm-form-header {
+  background-color: #76cdd8;
+  border: none;
+}
+
+.tm-contact-form {
+  position: relative;
+  top: -50px;
+  z-index: 100;
+}
+
+.tm-form-footer {
+  position: relative;
+  top: -100px;
+}
+
+.tm-contact-form::before,
+.tm-form-footer::before {
+  position: absolute;
+}
+
+.img-fluid {
+  transition: transform 0.3s;
+}
+
+/* Hover and focus effects */
+
+.tm-card:nth-child(-n + 3):hover .tm-quote,
+.tm-card:nth-child(-n + 3):hover p {
+  color: #76cdd8;
+}
+
+.tm-card:nth-child(-n + 3):hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 100px solid #76cdd8;
+  border-left: 100px solid transparent;
+}
+
+.tm-card:nth-child(2):hover::after {
+  right: auto;
+  left: 0;
+  border-left: 0;
+  border-right: 100px solid transparent;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  background-color: #76cdd8;
+  border-color: transparent;
+}
+
+.img-fluid:hover {
+  transform: scale(1.1);
+}
+
+.tm-pricing-table:hover {
+  box-shadow: 0 0 0 0.2rem #24d4d4;
+}
+
+.tm-pricing-table:hover .btn-secondary {
+  background: #24d4d4;
+}
+
+.tm-pricing-body:hover .tm-pricing-discount {
+  display: block;
+}
+
+.form-control:focus,
+select:focus {
+  outline: none;
+  border-color: #24d4d4;
+  box-shadow: 0 0 0 0.2rem #24d4d4;
+}

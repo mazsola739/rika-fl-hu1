@@ -1,0 +1,19 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+.navbar-brand {
+  font-size: 2em;
+  font-weight: bold;
+}
+.btn-secondary {
+  background-color: #525252;
+}
+.btn-primary {
+  background-color: Coral;
+}
+.btn-primary:hover {
+  background-color: lightcoral;
+}
+section:nth-child(2) {
+  color: #525252;
+}
