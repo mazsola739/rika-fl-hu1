@@ -1,0 +1,254 @@
+@use "sass:map";
+
+// Card specific sizes, keyed by the position of the card in the list.
+$cards: (
+  1: (height: 300px, image-width: 430px, image-height: 280px, heading-size: 150%),
+  2: (height: 300px, image-width: 415px, image-height: 280px, heading-size: 150%),
+  3: (height: 320px, image-width: 460px, image-height: 300px, heading-size: 160%)
+);
+
+$pageWidth: 1200px;
+$cardWidth: 1080px;
+$sideOffset: 10%;
+
+@mixin button {
+  border: 0;
+  border-radius: 5px;
+  background-color: $buttonBgColor;
+  color: $cardTxtColor;
+  font-size: 90%;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(110%);
+  }
+}
+
+@mixin link {
+  color: $cardTxtColor;
+
+  &:hover {
+    color: $txtHighlightColor;
+  }
+}
+
+%logo {
+  display: flex;
+  align-items: flex-start;
+  height: 42px;
+  padding-top: 20px;
+
+  p {
+    margin: -5px 0 0;
+    padding-left: 10px;
+    font-family: $articleFont;
+    font-size: 150%;
+
+    span {
+      display: block;
+      font-size: small;
+    }
+  }
+}
+
+body {
+  min-width: $pageWidth + 40px;
+  margin: 0;
+  background-color: $bodyBgColor;
+  font-family: $mainFont;
+  font-size: 1em;
+}
+
+mark {
+  background-color: $txtHighlightColor;
+  color: $headerTxtColor;
+}
+
+.header {
+  height: 720px;
+  border-radius: 0 0 40% 0 / 0 0 40% 0;
+  background: $backgroundImage center / cover no-repeat;
+  color: $headerTxtColor;
+
+  .header-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 530px;
+    margin-left: $sideOffset;
+  }
+
+  .landing-logo {
+    @extend %logo;
+  }
+
+  .header_heading {
+    font-size: 450%;
+    font-weight: bold;
+    line-height: 100%;
+  }
+
+  .header_text {
+    margin-top: -7px;
+    font-family: $articleFont;
+    line-height: 145%;
+  }
+
+  .button {
+    display: flex;
+    justify-content: space-between;
+    width: 485px;
+    margin-top: 50px;
+    font-size: 125%;
+  }
+
+  .header_button {
+    @include button;
+    padding: 12px 40px;
+  }
+
+  .login {
+    @include link;
+    margin-top: 8px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $pageWidth;
+  margin: 0 auto;
+
+  .section_text {
+    color: $headerTxtColor;
+    font-size: 250%;
+    font-weight: bold;
+  }
+}
+
+.section_card {
+  display: flex;
+  width: $cardWidth;
+  margin-bottom: 25px;
+  padding: 20px 20px 0;
+  border-radius: 8px;
+  background-color: $cardBgColor;
+  color: $cardTxtColor;
+
+  .section_card_img {
+    border-radius: 5px;
+    object-fit: cover;
+  }
+
+  .section_card_right_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 470px;
+    padding: 20px 0 0 95px;
+    line-height: 160%;
+  }
+
+  .section_card_heading {
+    font-weight: bold;
+  }
+
+  .section_card_text {
+    font-family: $articleFont;
+    text-align: justify;
+  }
+
+  .section_link {
+    @include link;
+  }
+}
+
+@each $index, $card in $cards {
+  .section_card:nth-child(#{$index}) {
+    height: map.get($card, height);
+
+    .section_card_img {
+      width: map.get($card, image-width);
+      height: map.get($card, image-height);
+    }
+
+    .section_card_heading {
+      font-size: map.get($card, heading-size);
+    }
+  }
+}
+
+.section_banner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: $pageWidth;
+  height: 150px;
+  margin-top: 115px;
+  margin-bottom: -110px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, $footerColorLeft, $footerColorRight);
+  color: $headerTxtColor;
+
+  .section_banner_text_wrap {
+    display: flex;
+    flex-direction: column;
+    margin: 0 30px 0 150px;
+    font-family: $articleFont;
+  }
+
+  .section_banner_heading {
+    margin-bottom: 0;
+    font-size: 180%;
+    font-weight: bold;
+  }
+
+  .section_banner_text {
+    color: $cardTxtColor;
+  }
+
+  .section_banner_button {
+    @include button;
+    width: 150px;
+    margin: 0 150px 0 auto;
+    padding: 14px 0;
+  }
+}
+
+.footer {
+  height: 250px;
+  margin-top: 30px;
+  background-color: $cardBgColor;
+  color: $cardTxtColor;
+
+  .footer-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 110px $sideOffset 0;
+  }
+
+  .footer_logo {
+    @extend %logo;
+    padding-top: 0;
+  }
+
+  .footer_text {
+    width: 300px;
+    font-family: $articleFont;
+    font-size: 95%;
+  }
+
+  .footer-cr {
+    font-family: $articleFont;
+
+    // Easter egg: my name, in the day and the night theme too.
+    &::after {
+      content: ' · coded by Rika';
+    }
+  }
+}

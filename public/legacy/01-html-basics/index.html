@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HTML Basics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="wrapper">
+    <div id="main">
+      <div id="container">
+        <main id="content">
+          <img src="logo.png" alt="epam logo">
+          <h1>HTML BASICS</h1>
+          <br>
+          <nav>
+            <a href="#"><strong>Home</strong></a>
+            <a href="#registration"><strong>Registration</strong></a>
+            <a href="#headings"><strong>Headings</strong></a>
+            <a href="#typesoflists"><strong>Types of lists</strong></a>
+            <a href="#image"><strong>Image</strong></a>
+            <a href="#table"><strong>Table</strong></a>
+            <a href="#blockquotes"><strong>Blockquotes</strong></a>
+            <a href="#textformats"><strong>Text formats</strong></a>
+          </nav>
+          <hr>
+          <div>
+            <p><strong>Fructose</strong>, or
+              <strong>fruit sugar</strong>, is a simple
+              <em>ketonic monosaccharide</em> found in many plants, where it is often bonded to glucose to form the
+              disaccharide sucrose.
+              It is one of the three dietary
+              <u>monosaccharides</u>, along with glucose and galactose, that are absorbed directly into blood during
+              digestion.
+              Its formula is C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> and its density is 1.694 g/cm<sup>3</sup> .
+              Fructose was discovered by French chemist
+              <a href="https://en.wikipedia.org/wiki/Augustin-Pierre_Dubrunfaut">Augustin-Pierre Dubrunfaut</a> in
+              <ins>1847</ins>, <del>not in 1848</del>.<br><br>
+              It makes us <strong>strong</strong>!
+              <em>This is emphasized</em>.<br><br>
+              Excessive consumption of fructose (especially from sugar-sweetened beverages) may contribute to insulin
+              resistance, obesity, elevated
+              <abbr title="Low-density lipoprotein">LDL</abbr> cholesterol and triglycerides, leading to metabolic
+              syndrome.
+              The <abbr title="European Food Safety Authority">EFSA</abbr> stated that fructose may be preferable over
+              sucrose and glucose in sugar-sweetened foods and beverages because of its lower effect on postprandial
+              blood sugar levels, and noted that
+              <cite>high intakes of fructose may lead to metabolic complications such as dyslipidaemia, insulin
+                resistance, and increased visceral adiposity</cite> (this is a citation)
+            </p>
+          </div>
+          <hr>
+          <form id="registration">
+            <label for="login">Login: </label><input id="login" name="login" type="text" autocomplete="username"><br>
+            <label for="email">Email: </label><input id="email" name="email" type="email" autocomplete="email"><br>
+            <label for="password">Password: </label><input id="password" name="password" type="password" autocomplete="new-password"><br>
+            <label for="select">Select Programming Language </label><select id="select" name="language">
+              <option value="">Choose one</option>
+              <option value="JavaScript" selected>JavaScript</option>
+              <option value="Python">Python</option>
+              <option value="PHP">PHP</option>
+            </select><br><br>
+            <textarea name="comment" id="comment" rows="3" cols="25" aria-label="Comment"></textarea><br><button type="submit">Submit</button>
+          </form>
+          <div id="headings">
+            <article>h1 defines the most important heading. h6 defines the least important heading. Font-size for h1 is
+              the same as font-size for h2, because we have to use only one h1 on the page, and it is commonly used
+              inside header<br><br>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+            </article>
+          </div>
+          <hr>
+          <div id="typesoflists">
+            <article>
+              <h3>Unordered Shopping List</h3>
+              <ul>
+                <li>Vegetables:
+                  <ul>
+                    <li>Potatos</li>
+                    <li>Carrots</li>
+                    <li>Cucumbers</li>
+                  </ul>
+                </li>
+                <li>Fruits:
+                  <ul>
+                    <li>Apples</li>
+                    <li>Bananas</li>
+                    <li>Pears</li>
+                  </ul>
+                </li>
+                <li>Milk</li>
+                <li>Butter</li>
+              </ul>
+              <h3>Definition List</h3>
+              <dl>
+                <dt>HTML</dt>
+                <dd>HTML is the standard markup language to create Web pages.</dd>
+                <dt>CSS</dt>
+                <dd>CSS describes how HTML elements are to be displayed.</dd>
+                <dt>JavaScript</dt>
+                <dd>JavaScript is a scripting languages, primarily used on the Web.</dd>
+              </dl>
+              <h3>Ordered To-do List</h3>
+              <ol>
+                <li>Wash your hands</li>
+                <li>Clean your apartment</li>
+                <li>Do your homework
+                  <ol type="A">
+                    <li>Create HTML Page</li>
+                    <li>Check all requirements &amp; folder structure</li>
+                    <li>Upload files</li>
+                  </ol>
+                </li>
+              </ol>
+            </article>
+          </div>
+          <hr>
+          <div id="image">
+            <p><img src="fruits.jpg" alt="Fruits"></p>
+          </div>
+          <hr>
+          <div id="table">
+            <article>
+              <h2> Sugar content of selected common plant foods (g/100g)</h2>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Food item</td>
+                    <td>Free Fructose</td>
+                    <td>Free Glucose</td>
+                  </tr>
+                  <tr>
+                    <td>Banana</td>
+                    <td>4.9</td>
+                    <td>5.0</td>
+                  </tr>
+                  <tr>
+                    <td>Grapes</td>
+                    <td>8.1</td>
+                    <td>7.2</td>
+                  </tr>
+                  <tr>
+                    <td>Apple</td>
+                    <td>5.9</td>
+                    <td>2.4</td>
+                  </tr>
+                  <tr>
+                    <td>Pineapple</td>
+                    <td>2.1</td>
+                    <td>1.7</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+          <hr>
+          <div id="blockquotes">
+            <h2>Blockquotes</h2>
+            Let’s keep it simple. Italics are good to help set it off from the body text. Be sure to style the
+            citation.<br><br>
+            <blockquote>"I think we're all sensitive, everyone has a certain way about themselves that people don't like
+              to let their emotions out too often. I think people tend to suppress them and hold them in, so I think
+              there's a bit of that in me."<br>
+              <a href="https://en.wikipedia.org/wiki/Jason_Statham">Jason Statham</a>
+            </blockquote>
+          </div>
+          <hr>
+          <div id="textformats">
+            <article>
+              <h2>Text formats</h2>
+              <h3>Preformatted Text</h3>
+              <pre><br/>Text in a <strong>pre</strong> element
+is displayed in a fixed-width
+font, and it preserves
+both           <strong>spaces</strong> and
+<strong>line breaks</strong><br/><br/></pre>
+              <h3>This is code</h3>
+              <pre><br/>.container {
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+}<br/><br/></pre>
+            </article>
+          </div>
+        </main>
+        <footer>
+          <p><small>Made with HTML tags only, by <abbr title="Easter egg: my name is in every homework">Rika</abbr></small></p>
+        </footer>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
