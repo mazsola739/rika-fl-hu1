@@ -17,10 +17,10 @@ export default function DomEvents() {
     // The original page: mint, in Times New Roman, with "Rika's playground" over a turquoise tab
     // bar. It stays light in the dark theme too, like the other original pages.
     <div className="flex flex-col items-center overflow-hidden rounded-lg bg-[#dcfcf6] px-4 pt-6 pb-10 font-times text-black">
-      <p className="mb-7 text-[1.6rem]">Rika’s playground</p>
+      <p className="mb-5 text-[1.4rem]">Rika’s playground</p>
       <div
         role="tablist"
-        className="mb-12 flex flex-wrap justify-center gap-x-7 gap-y-1 bg-[#8eebdc] px-4 py-3 text-[1.35rem] sm:mb-16"
+        className="mb-10 flex flex-wrap justify-center gap-x-6 gap-y-1 bg-[#8eebdc] px-4 py-2.5 text-lg sm:mb-12"
       >
         {tasks.map((task, index) => (
           <button

@@ -98,7 +98,7 @@ export function Basketball() {
           ))}
         </div>
 
-        <div className="mt-3 flex justify-between text-[1.35rem]">
+        <div className="mt-3 flex justify-between text-lg">
           <p>
             Team A:<span data-testid="score-A">{scores.A}</span>
           </p>

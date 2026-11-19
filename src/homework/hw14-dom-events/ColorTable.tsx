@@ -63,7 +63,7 @@ export function ColorTable() {
                     data-color={color}
                     onClick={() => handleClick(row, column)}
                     className={cx(
-                      'size-24 cursor-pointer text-[1.35rem] sm:size-40 md:size-[13.75rem]',
+                      'size-20 cursor-pointer text-lg sm:size-28 md:size-32',
                       colorClass[color],
                     )}
                   >
