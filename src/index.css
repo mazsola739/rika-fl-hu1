@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/*
+ * dark: follows the data-theme attribute, set by the theme switch. index.html sets it before
+ * the first paint: the visitor's saved choice, light by default.
+ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * The look of the course's task sheets (the PDFs): Calibri (Carlito here), a big dark title,
+ * a coral "DEADLINE:" line and cyan uppercase section headings. The sheets' cyan (#32b6ce) and
+ * coral (#d35d47) are a little darker here, so they stay readable on white.
+ */
+@theme {
+  --font-sans: "Carlito", Calibri, "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: Consolas, "Courier New", ui-monospace, monospace;
+
+  /* Buttons and other controls (white text on it). */
+  --color-accent: #0f7c90;
+  --color-accent-strong: #0b5f6e;
+  --color-accent-soft: #d6f1f5;
+  /* Links and other accent-colored text. */
+  --color-link: #0f7c90;
+
+  --color-sheet-title: #222222;
+  --color-sheet-heading: #1f8fa5;
+  --color-deadline: #c4513c;
+  --color-sheet-mark: #a8afba;
+}
+
+@layer base {
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  /* Dark theme (light is the default): the same sheet colors, brighter on the dark paper. */
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --color-link: #5fd0e3;
+    --color-sheet-title: #f1f5f9;
+    --color-sheet-heading: #5fd0e3;
+    --color-deadline: #f08a74;
+    --color-sheet-mark: #64748b;
+  }
+
+  body {
+    @apply bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}

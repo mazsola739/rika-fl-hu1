@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "files": {
+    "includes": [
+      "**",
+      "!**/dist",
+      "!public/legacy/01-html-basics",
+      "!public/legacy/02-css-basics",
+      "!public/legacy/03-preprocessors",
+      "!public/legacy/04-css-layouts",
+      "!public/legacy/05-responsive",
+      "!public/legacy/06-bootstrap",
+      "!public/legacy/13-dom-file-tree/material-icons"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": { "quoteStyle": "single", "trailingCommas": "all", "semicolons": "asNeeded" }
+  },
+  "css": {
+    "parser": { "tailwindDirectives": true }
+  },
+  "tailwind": {
+    "stylesheet": "src/index.css"
+  },
+  "linter": {
+    "enabled": true,
+    "domains": { "react": "recommended", "tailwind": "recommended", "test": "recommended" },
+    "rules": {
+      "preset": "recommended",
+      "nursery": {
+        "useTailwindSortedClasses": { "level": "error", "fix": "safe" },
+        "useTailwindShorthandClasses": { "level": "error", "fix": "safe" }
+      }
+    }
+  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } }
+}
