@@ -12,7 +12,6 @@ const tasks = [
 
 export default function DomEvents() {
   const [active, setActive] = useState(0)
-  const ActiveTask = (tasks[active] ?? tasks[0])?.Component
 
   return (
     // The original page: mint, in Times New Roman, with "Rika's playground" over a turquoise tab
@@ -39,8 +38,24 @@ export default function DomEvents() {
           </button>
         ))}
       </div>
-      <div role="tabpanel" className="flex max-w-full justify-center">
-        {ActiveTask && <ActiveTask />}
+      {/* All three tasks sit in the same grid cell, the inactive ones invisible and inert: the box
+          is as big as the biggest task, so the page does not jump when the tab changes, and every
+          task keeps its state. */}
+      <div className="grid max-w-full items-start justify-items-center">
+        {tasks.map(({ label, Component }, index) => (
+          <div
+            key={label}
+            role={index === active ? 'tabpanel' : undefined}
+            aria-hidden={index === active ? undefined : true}
+            inert={index !== active}
+            className={cx(
+              'flex max-w-full justify-center [grid-area:1/1]',
+              index !== active && 'invisible',
+            )}
+          >
+            <Component />
+          </div>
+        ))}
       </div>
     </div>
   )

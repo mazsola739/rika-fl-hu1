@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280">
+  <title>Life in EPAM: a happy little raisin codes on a laptop with a coffee</title>
+  <defs>
+    <linearGradient id="epam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#39c2d7"/>
+      <stop offset="1" stop-color="#a3c644"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="280" rx="8" fill="url(#epam)"/>
+  <rect x="10" width="8" height="280" fill="#1f8fa5" opacity="0.5"/>
+
+  <text x="104" y="38" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#fff">Life in EPAM</text>
+
+  <!-- speech bubble -->
+  <rect x="122" y="56" width="48" height="28" rx="10" fill="#fff"/>
+  <path d="M132 82 l-6 12 l16 -10z" fill="#fff"/>
+  <text x="146" y="76" text-anchor="middle" font-family="Verdana, sans-serif" font-size="15" font-weight="bold" fill="#fc098f">=)</text>
+
+  <!-- the raisin -->
+  <path d="M60 140 q-6 -38 30 -46 q28 -6 44 16 q16 22 4 46 q-12 22 -42 20 q-30 -2 -36 -36z" fill="#5b2a45"/>
+  <g stroke="#3c1a2d" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M72 112 q10 -6 18 2"/>
+    <path d="M110 104 q12 -2 18 8"/>
+    <path d="M128 138 q6 8 2 16"/>
+    <path d="M66 140 q-2 8 4 14"/>
+  </g>
+  <circle cx="88" cy="128" r="9" fill="#fff"/>
+  <circle cx="114" cy="128" r="9" fill="#fff"/>
+  <circle cx="90" cy="130" r="4" fill="#222"/>
+  <circle cx="116" cy="130" r="4" fill="#222"/>
+  <circle cx="91.5" cy="128" r="1.4" fill="#fff"/>
+  <circle cx="117.5" cy="128" r="1.4" fill="#fff"/>
+  <circle cx="78" cy="144" r="5" fill="#ff7aa8" opacity="0.6"/>
+  <circle cx="124" cy="144" r="5" fill="#ff7aa8" opacity="0.6"/>
+  <path d="M92 146 q9 8 18 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- laptop -->
+  <path d="M46 168 h108 l-8 46 h-92z" fill="#d7dde3"/>
+  <path d="M54 174 h92 l-6 34 h-80z" fill="#22303a"/>
+  <text x="100" y="198" text-anchor="middle" font-family="Consolas, monospace" font-size="16" font-weight="bold" fill="#5fd0e3">&lt;/&gt;</text>
+  <rect x="34" y="214" width="132" height="8" rx="4" fill="#b8c2cc"/>
+
+  <!-- coffee -->
+  <rect x="160" y="190" width="22" height="24" rx="4" fill="#fff"/>
+  <path d="M182 196 q8 0 8 7 q0 7 -8 7" stroke="#fff" stroke-width="3" fill="none"/>
+  <rect x="163" y="193" width="16" height="5" rx="2" fill="#6b3e1f"/>
+  <g stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8">
+    <path d="M166 184 q-3 -5 0 -10"/>
+    <path d="M174 184 q-3 -5 0 -10"/>
+  </g>
+
+  <text x="104" y="262" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#fff">Rika</text>
+</svg>

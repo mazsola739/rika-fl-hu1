@@ -11,29 +11,35 @@ export interface Book {
 export type BookFields = Omit<Book, 'id'>
 
 export const STORAGE_KEY = 'fl-hu1:books'
-export const DEFAULT_COVER = `${import.meta.env.BASE_URL}hw15/book-cover.svg`
+const cover = (file: string) => `${import.meta.env.BASE_URL}hw15/${file}`
 
-/** The three books of the very first visit; afterwards the list lives in localStorage. */
+/** The cover of new books. */
+export const DEFAULT_COVER = cover('book-cover.svg')
+
+/**
+ * The three books of the very first visit, with funny covers; afterwards the list lives in
+ * localStorage.
+ */
 export const defaultBooks: Book[] = [
   {
     id: 1,
     title: 'Harry Potter',
     author: 'J. K. Rowling',
-    image: DEFAULT_COVER,
+    image: cover('harry-potter.svg'),
     plot: 'Young boy realizes that he is a wizard.',
   },
   {
     id: 2,
     title: 'How to Cook',
     author: 'Robin Cook',
-    image: DEFAULT_COVER,
+    image: cover('how-to-cook.svg'),
     plot: 'Writer realizes he is a cook, but he cannot cook.',
   },
   {
     id: 3,
     title: 'Life in EPAM',
     author: 'Rika',
-    image: DEFAULT_COVER,
+    image: cover('life-in-epam.svg'),
     plot: 'Rika goes to EPAM =)',
   },
 ]
@@ -42,12 +48,20 @@ function loadBooks(): Book[] {
   try {
     const stored: unknown = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null')
     if (Array.isArray(stored)) {
-      return stored as Book[]
+      return (stored as Book[]).map(withFunnyCover)
     }
   } catch {
     // Corrupted storage: start again from the default books.
   }
   return defaultBooks
+}
+
+/** Books saved before the funny covers: the default books get their new cover. */
+function withFunnyCover(book: Book): Book {
+  const original = defaultBooks.find((item) => item.id === book.id && item.title === book.title)
+  return original && book.image.endsWith('hw15/book-cover.svg')
+    ? { ...book, image: original.image }
+    : book
 }
 
 export function useBooks() {

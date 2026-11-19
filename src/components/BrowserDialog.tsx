@@ -32,7 +32,8 @@ export function BrowserDialog({
 }: BrowserDialogProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const okRef = useRef<HTMLButtonElement>(null)
-  const site = `${window.location.host || 'This page'} says`
+  // The address the homework ran on, back in 2021.
+  const site = 'localhost:2021 says'
 
   useEffect(() => {
     if (!autoFocus) return

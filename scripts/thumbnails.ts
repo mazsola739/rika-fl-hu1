@@ -53,13 +53,35 @@ if (!base) throw new Error('The Vite server has no local URL')
 const browser = await chromium.launch({ channel: 'chrome' })
 await mkdir(OUT_DIR, { recursive: true })
 
+/** Steps before the picture of some homework, to show its best side. */
+const setup: Record<string, (page: Page) => Promise<void>> = {
+  // The calculator's easter egg.
+  '11-errors-storage': async (page) => {
+    await page.getByRole('textbox', { name: 'Enter a mathematical expression' }).fill('Rika')
+    await page.keyboard.press('Enter')
+    await page.getByText('Rika = priceless').waitFor()
+    await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
+  },
+  // A book with its funny cover in the preview.
+  '15-bom-books': async (page) => {
+    await page.getByRole('link', { name: 'Preview Life in EPAM' }).click()
+    await page.getByRole('img', { name: 'Cover of Life in EPAM' }).waitFor()
+    await page.waitForLoadState('networkidle')
+  },
+}
+
+async function openPage(options: Parameters<typeof browser.newPage>[0], path: string) {
+  const page = await browser.newPage(options)
+  await page.goto(new URL(path, base).href, { waitUntil: 'networkidle' })
+  return page
+}
+
 try {
   for (const homework of homeworkList) {
     console.log(`${homework.slug}`)
 
     if (homework.legacy) {
-      const page = await browser.newPage({ viewport: VIEWPORT })
-      await page.goto(new URL(homework.legacy.src, base).href, { waitUntil: 'networkidle' })
+      const page = await openPage({ viewport: VIEWPORT }, homework.legacy.src)
       await save(page, homework.slug, await page.screenshot())
       await page.close()
       continue
@@ -67,14 +89,19 @@ try {
 
     for (const theme of ['light', 'dark'] as const) {
       // A narrower window than for the original pages: the demos are smaller, so they show bigger.
-      const page = await browser.newPage({ viewport: REACT_VIEWPORT, colorScheme: theme })
-      await page.goto(`${base}#/hw/${homework.slug}`, { waitUntil: 'networkidle' })
+      const page = await openPage(
+        { viewport: REACT_VIEWPORT, colorScheme: theme },
+        `#/hw/${homework.slug}`,
+      )
       // Only the demo: a short one leaves empty background below, not the page navigation.
       await page.addStyleTag({
         content: '#demo ~ *, article > nav, footer { visibility: hidden !important; }',
       })
       const demo = page.locator('#demo')
       await demo.locator(':scope > *').first().waitFor()
+      await setup[homework.slug]?.(page)
+      // The setup may have scrolled: the clip below is measured from the top of the page.
+      await page.evaluate(() => window.scrollTo(0, 0))
       await page.evaluate(() => document.fonts.ready)
       const box = await demo.boundingBox()
       if (!box) throw new Error(`#demo of ${homework.slug} is not visible`)

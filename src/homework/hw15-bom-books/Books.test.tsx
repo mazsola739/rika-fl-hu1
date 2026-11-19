@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router'
 import { describe, expect, it } from 'vitest'
@@ -28,10 +28,10 @@ describe('Books', () => {
     const user = userEvent.setup()
     renderAt('/hw/15-bom-books')
 
-    await user.click(screen.getByRole('link', { name: 'How to Cook' }))
+    await user.click(screen.getByRole('link', { name: 'Preview How to Cook' }))
     expect(path()).toBe('/hw/15-bom-books/books/2')
-    expect(screen.getByRole('heading', { name: 'How to Cook' })).toBeInTheDocument()
-    expect(screen.getByText('Robin Cook')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'How to Cook' })).toBeInTheDocument()
+    expect(within(screen.getByRole('article')).getByText('Robin Cook')).toBeInTheDocument()
   })
 
   it.each([
@@ -55,7 +55,7 @@ describe('Books', () => {
     await user.click(screen.getByRole('button', { name: 'Save' }))
 
     expect(path()).toBe('/hw/15-bom-books/books/1')
-    expect(screen.getByRole('heading', { name: 'Harry Potter 2' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'Harry Potter 2' })).toBeInTheDocument()
     expect(JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]')[0].title).toBe('Harry Potter 2')
     await waitFor(() => expect(screen.getByText('Book successfully updated')).toBeVisible())
   })
@@ -83,9 +83,9 @@ describe('Books', () => {
 
     expect(path()).toBe('/hw/15-bom-books/books/4')
     const titles = screen
-      .getAllByRole('link', { name: /^(?!Edit|Add)/ })
-      .map((link) => link.textContent)
-    expect(titles.at(-1)).toBe('New Book')
+      .getAllByRole('link', { name: /^Preview / })
+      .map((link) => link.getAttribute('aria-label'))
+    expect(titles.at(-1)).toBe('Preview New Book')
   })
 
   it('asks before discarding changes and goes back on confirmation', async () => {
@@ -113,7 +113,7 @@ describe('Books', () => {
     await user.click(screen.getByRole('button', { name: 'Delete' }))
 
     expect(path()).toBe('/hw/15-bom-books')
-    expect(screen.queryByRole('link', { name: 'Life in EPAM' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'Preview Life in EPAM' })).not.toBeInTheDocument()
     const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]') as { title: string }[]
     expect(stored.map((book) => book.title)).toEqual(['Harry Potter', 'How to Cook'])
     await waitFor(() => expect(screen.getByText('Book successfully deleted')).toBeVisible())
@@ -127,7 +127,7 @@ describe('Books', () => {
     await user.click(screen.getByRole('button', { name: 'Keep it' }))
 
     expect(path()).toBe('/hw/15-bom-books/books/3/edit')
-    expect(screen.getByRole('link', { name: 'Life in EPAM' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Preview Life in EPAM' })).toBeInTheDocument()
   })
 
   it('has no delete button when adding a book', () => {
