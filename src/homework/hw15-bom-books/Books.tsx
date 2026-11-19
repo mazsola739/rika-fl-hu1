@@ -126,7 +126,7 @@ function BookList({ books }: { books: Book[] }) {
             <Cover
               book={book}
               alt=""
-              className="absolute top-4 right-4 w-16 rotate-3 border border-black/20 shadow-md"
+              className="absolute top-4 right-4 w-16 border border-black/20 shadow-md"
             />
             <p className="pr-20 text-[1.2rem] leading-tight italic">{book.author}</p>
             <h3 className="mt-2 pr-20 text-[1.6rem] leading-tight font-bold">{book.title}</h3>
