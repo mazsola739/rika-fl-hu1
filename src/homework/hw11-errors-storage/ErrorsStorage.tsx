@@ -17,36 +17,40 @@ export default function ErrorsStorage() {
 }
 
 /**
- * A small website in the frame of the quiz (homework 08): the page links are counted in
- * localStorage, and the results come in an alert(), like in the original.
+ * The original page, rebuilt: it was a Bootstrap 4.5 template (nav-pills, an h3 and a large block
+ * button in a 700px column) that could not be edited, so the script added the results list under
+ * the button. It stays a white page in the dark theme too.
  */
 function VisitCounter() {
   return (
     <Panel title="Task 1 – Page visit counter">
-      <div className="rounded-2xl bg-linear-to-br from-[#fc098f] via-[#39c2d7] to-[#a3c644] p-2 sm:p-3">
-        <div className="min-h-72 overflow-hidden rounded-xl bg-white text-slate-700 shadow-[0_0_15px_rgba(0,0,0,0.35)]">
-          <nav className="flex flex-wrap gap-1 border-b border-slate-200 px-3 py-2">
-            <PageLink to={BASE} end>
-              Home
-            </PageLink>
-            {PAGES.map((page, index) => (
-              <PageLink key={page} to={`${BASE}/page/${index + 1}`} onClick={() => visitLink(page)}>
-                Page {index + 1}
+      <div className="rounded-lg bg-white font-bootstrap leading-normal text-[#212529]">
+        <div className="mx-auto w-full max-w-[700px] px-4 pb-px">
+          <ul className="mt-4 mb-12 ml-12 flex flex-wrap">
+            <li>
+              <PageLink to={BASE} end>
+                Home
               </PageLink>
+            </li>
+            {PAGES.map((page, index) => (
+              <li key={page}>
+                <PageLink to={`${BASE}/page/${index + 1}`} onClick={() => visitLink(page)}>
+                  Page {index + 1}
+                </PageLink>
+              </li>
             ))}
-          </nav>
-          <div className="p-4">
-            <Routes>
-              <Route index element={<VisitHome />} />
-              <Route path="page/:number" element={<VisitPage />} />
-            </Routes>
-          </div>
+          </ul>
+          <Routes>
+            <Route index element={<VisitHome />} />
+            <Route path="page/:number" element={<VisitPage />} />
+          </Routes>
         </div>
       </div>
     </Panel>
   )
 }
 
+/** Bootstrap's .nav-pills .nav-link. */
 function PageLink({
   to,
   end,
@@ -65,8 +69,8 @@ function PageLink({
       onClick={onClick}
       className={({ isActive }) =>
         cx(
-          'rounded-lg px-3 py-1 font-semibold text-sm',
-          isActive ? 'bg-[#b22746] text-white' : 'text-[#b22746] hover:bg-[#b22746]/10',
+          'block rounded px-4 py-2',
+          isActive ? 'bg-[#007bff] text-white' : 'text-[#007bff] hover:text-[#0056b3]',
         )
       }
     >
@@ -75,33 +79,30 @@ function PageLink({
   )
 }
 
+/** Bootstrap's h3 with mb-5. */
+const heading = 'mb-12 font-medium text-[1.75rem] leading-[1.2]'
+
 function VisitHome() {
   const [results, setResults] = useState<string[] | null>(null)
 
-  if (results) {
-    return (
-      <BrowserDialog
-        kind="alert"
-        call="alert(results)"
-        message={results.join('\n')}
-        autoFocus
-        onOk={() => setResults(null)}
-      />
-    )
-  }
-
   return (
-    <div className="flex flex-col gap-3">
-      <h3 className="text-xl font-bold text-[#fc098f]">Home</h3>
-      <p>Click the page links above, then come back and check the counts.</p>
+    <>
+      <h3 className={heading}>Welcome to Local Storage Homework</h3>
       <button
         type="button"
         onClick={() => setResults(viewResults())}
-        className="cursor-pointer self-start rounded-lg bg-[#b22746] px-4 py-2 text-sm font-semibold text-white hover:bg-[#8e244d]"
+        className="mb-12 block w-full cursor-pointer rounded-[0.3rem] border border-[#007bff] bg-[#007bff] px-4 py-2 text-[1.25rem] leading-normal text-white hover:border-[#0062cc] hover:bg-[#0069d9]"
       >
         View page visits results
       </button>
-    </div>
+      {results && (
+        <ul aria-label="Page visits" className="mb-4 list-disc pl-10">
+          {results.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
+      )}
+    </>
   )
 }
 
@@ -110,14 +111,16 @@ function VisitPage() {
   const page = PAGES[Number(number) - 1] as PageName | undefined
 
   return page ? (
-    <div className="flex flex-col gap-3">
-      <h3 className="text-xl font-bold text-[#fc098f]">Page {number}</h3>
-      <p>
-        Welcome to {page.replace('Page', 'Page ')}. This visit has been counted in localStorage.
+    <>
+      <h3 className={heading}>Welcome to Page {number}</h3>
+      <p className="mb-4">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac justo ullamcorper,
+        porttitor tellus non, tristique purus. Donec ac arcu eu dui dignissim mattis. Integer porta
+        scelerisque tempor. Morbi id congue urna. Fusce ut maximus erat.
       </p>
-    </div>
+    </>
   ) : (
-    <p>There is no such page.</p>
+    <p className="mb-4">There is no such page.</p>
   )
 }
 

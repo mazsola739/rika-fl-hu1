@@ -205,7 +205,7 @@ export const homeworkList: Homework[] = [
     ],
     kind: 'react',
     reactNotes:
-      'The pages of the visit counter are nested routes; the prompt() and alert() windows are drawn in the page. No eval: expressions go through a small recursive descent parser.',
+      'The visit counter keeps the look of the original Bootstrap page, its pages are nested routes; the calculator’s prompt() and alert() windows are drawn in the page. No eval: expressions go through a small recursive descent parser.',
   },
   {
     number: 12,

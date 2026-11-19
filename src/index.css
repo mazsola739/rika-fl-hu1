@@ -15,6 +15,10 @@
 @theme {
   --font-sans: "Carlito", Calibri, "Segoe UI", ui-sans-serif, system-ui, sans-serif;
   --font-mono: Consolas, "Courier New", ui-monospace, monospace;
+  /* Bootstrap 4's system font stack, for the homework that was built on Bootstrap. */
+  --font-bootstrap:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif;
 
   /* Buttons and other controls (white text on it). */
   --color-accent: #0f7c90;

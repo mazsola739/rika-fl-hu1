@@ -15,18 +15,19 @@ function renderPage() {
 }
 
 describe('ErrorsStorage', () => {
-  it('counts the page links and alerts the results', async () => {
+  it('counts the page links and lists the results under the button', async () => {
     const user = userEvent.setup()
     renderPage()
 
     await user.click(screen.getByRole('link', { name: 'Page 2' }))
+    expect(screen.getByRole('heading', { name: 'Welcome to Page 2' })).toBeVisible()
     await user.click(screen.getByRole('link', { name: 'Page 2' }))
     await user.click(screen.getByRole('link', { name: 'Home' }))
     await user.click(screen.getByRole('button', { name: 'View page visits results' }))
 
-    expect(screen.getByText(/You visited Page2 2 time\(s\)/)).toBeVisible()
-    await user.click(screen.getAllByRole('button', { name: 'OK' })[0] as HTMLElement)
-    expect(screen.getByRole('button', { name: 'View page visits results' })).toBeVisible()
+    const list = screen.getByRole('list', { name: 'Page visits' })
+    expect(list).toHaveTextContent('You visited Page1 0 time(s)')
+    expect(list).toHaveTextContent('You visited Page2 2 time(s)')
   })
 
   it('calculates the expression of the prompt, then asks again', async () => {
