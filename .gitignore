@@ -15,5 +15,3 @@ Thumbs.db
 # Local Claude Code settings
 .claude/
 
-# The original EPAM task PDFs: course material, kept locally only
-course-tasks/

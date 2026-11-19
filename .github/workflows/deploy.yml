@@ -1,6 +1,5 @@
 # Checks the app (lint, types, tests), builds it and publishes it to GitHub Pages.
 # One-time setup on GitHub: Settings → Pages → Source: "GitHub Actions".
-# The original task PDFs (course-tasks/) are not in the repository, so this build has none.
 name: Test and deploy
 
 on:

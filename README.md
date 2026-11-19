@@ -73,9 +73,8 @@ Actions**.
 
 ## Original task sheets
 
-The task PDFs are EPAM's course material, so they are not in the repository. Kept locally in
-`course-tasks/` (`FL1_HW01.pdf` … `FL1_HW15.pdf`), every homework page links its sheet, and a local
-build includes them; a build from the repository alone (e.g. CI) has no sheets and no links.
+The original task sheets of the course (EPAM's material) are in `course-tasks/` (`FL1_HW01.pdf` …
+`FL1_HW15.pdf`), and every homework page links its own sheet.
 
 ## Project structure
 
@@ -89,5 +88,5 @@ src/pages/             home, homework and not found pages
 src/assets/thumbnails/ card pictures of the home page
 src/site.ts            portfolio and repository links
 scripts/thumbnails.ts  takes the card pictures
-course-tasks/          the original EPAM task PDFs: local only, gitignored, never published
+course-tasks/          the original EPAM task sheets (PDF), linked from every homework
 ```
