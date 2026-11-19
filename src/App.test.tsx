@@ -40,6 +40,15 @@ describe('App', () => {
     ).toBeVisible()
   })
 
+  it('shows the Day/Night switch of HW03 when coming from the previous homework', async () => {
+    const user = userEvent.setup()
+    renderAt('/hw/02-css-basics')
+    await user.click(screen.getAllByRole('link', { name: /HW 03 Preprocessors/ })[0] as HTMLElement)
+
+    expect(screen.getByRole('heading', { level: 1, name: 'Preprocessors' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Night' })).toBeInTheDocument()
+  })
+
   it('shows a not found page for unknown homework', () => {
     renderAt('/hw/99-nothing')
     expect(screen.getByRole('heading', { name: 'Page not found' })).toBeInTheDocument()

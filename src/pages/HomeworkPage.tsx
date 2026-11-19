@@ -79,7 +79,11 @@ export function HomeworkPage() {
         <SheetSection title="My solution">
           {/* #demo: the part of the page the card thumbnails show (scripts/thumbnails.ts). */}
           <div id="demo">
-            {homework.legacy && <LegacyFrame page={homework.legacy} title={homework.title} />}
+            {/* key: a fresh preview for every homework, so the screen width and the theme of one
+                page do not carry over to the next (e.g. HW03's Day/Night switch). */}
+            {homework.legacy && (
+              <LegacyFrame key={homework.slug} page={homework.legacy} title={homework.title} />
+            )}
             {Component && (
               <Suspense fallback={<p className="text-slate-500">Loading…</p>}>
                 <Component />
