@@ -9,7 +9,7 @@ collected into one React app and renovated in 2026.
 - **HTML & CSS (01–06)** run as the original static pages, embedded with a screen width switcher –
   writing plain HTML, CSS, Sass and Bootstrap was the point of those tasks.
 - **JavaScript (07–15)** are rebuilt with React 19 and TypeScript, with Vitest tests for the logic.
-- Light and dark theme: the system setting by default, the visitor's choice is remembered.
+- Light and dark theme: light by default, the visitor's choice is remembered.
 - Styled like the course's task sheets: Calibri (Carlito), a coral DEADLINE line, cyan section
   headings and the deadline of every homework.
 - Homework 07 runs in browser-like `prompt()` and `alert()` windows; the example tables of 09, 10

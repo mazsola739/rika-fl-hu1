@@ -11,16 +11,13 @@
     <title>FL-HU1 – Front-end Lab homework</title>
     <script>
       // Pick the theme before the first paint, so the page never flashes the wrong colors:
-      // the visitor's saved choice, or the system setting when there is none.
+      // the visitor's saved choice, light by default.
       ;(() => {
         let theme
         try {
           theme = localStorage.getItem('theme')
         } catch {}
-        if (theme !== 'light' && theme !== 'dark') {
-          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        }
-        document.documentElement.dataset.theme = theme
+        document.documentElement.dataset.theme = theme === 'dark' ? 'dark' : 'light'
       })()
     </script>
   </head>

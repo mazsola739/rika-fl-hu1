@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 /*
- * dark: follows the data-theme attribute instead of the system setting, so the theme switch
- * can override it. index.html sets data-theme before the first paint: the visitor's saved
- * choice, or the system setting when there is none.
+ * dark: follows the data-theme attribute, set by the theme switch. index.html sets it before
+ * the first paint: the visitor's saved choice, light by default.
  */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -41,7 +40,7 @@
     color-scheme: light;
   }
 
-  /* Dark theme: the same sheet colors, brighter on the dark paper. */
+  /* Dark theme (light is the default): the same sheet colors, brighter on the dark paper. */
   :root[data-theme="dark"] {
     color-scheme: dark;
     --color-link: #5fd0e3;

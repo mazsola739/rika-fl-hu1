@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { MoonIcon, SunIcon } from './icons'
 
 type Theme = 'light' | 'dark'
@@ -9,30 +9,9 @@ export const THEME_STORAGE_KEY = 'theme'
 const readTheme = (): Theme =>
   document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
 
-const savedTheme = (): string | null => {
-  try {
-    return localStorage.getItem(THEME_STORAGE_KEY)
-  } catch {
-    return null
-  }
-}
-
-/** Switches between the light and the dark theme and remembers the choice. */
+/** Switches between the light (default) and the dark theme and remembers the choice. */
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>(readTheme)
-
-  // Until the visitor picks a theme, follow the system setting when it changes.
-  useEffect(() => {
-    const query = matchMedia('(prefers-color-scheme: dark)')
-    const onChange = () => {
-      if (savedTheme()) return
-      const next: Theme = query.matches ? 'dark' : 'light'
-      document.documentElement.dataset.theme = next
-      setTheme(next)
-    }
-    query.addEventListener('change', onChange)
-    return () => query.removeEventListener('change', onChange)
-  }, [])
 
   const next: Theme = theme === 'dark' ? 'light' : 'dark'
 
