@@ -75,7 +75,7 @@ export function Basketball() {
           ref={courtRef}
           data-testid="court"
           onClick={moveBall}
-          className="relative cursor-pointer"
+          className="relative cursor-pointer ring-6 ring-white"
           style={{ ...COURT, backgroundImage: `url(${court})`, backgroundSize: '100% 100%' }}
         >
           <img
@@ -98,12 +98,12 @@ export function Basketball() {
           ))}
         </div>
 
-        <div className="mt-2 flex justify-between text-slate-700 dark:text-slate-200">
+        <div className="mt-3 flex justify-between text-[1.35rem]">
           <p>
-            Team A: <span data-testid="score-A">{scores.A}</span>
+            Team A:<span data-testid="score-A">{scores.A}</span>
           </p>
           <p>
-            Team B: <span data-testid="score-B">{scores.B}</span>
+            Team B:<span data-testid="score-B">{scores.B}</span>
           </p>
         </div>
         <p

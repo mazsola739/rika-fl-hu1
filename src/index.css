@@ -19,6 +19,9 @@
   --font-bootstrap:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
     sans-serif;
+  /* The fonts of the plain original pages: the browser's default serif and Verdana for forms. */
+  --font-times: "Times New Roman", Times, serif;
+  --font-verdana: Verdana, Geneva, Tahoma, sans-serif;
 
   /* Buttons and other controls (white text on it). */
   --color-accent: #0f7c90;

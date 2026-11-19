@@ -27,11 +27,11 @@ export function PhoneChecker() {
   }
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-[32rem]">
       <p
         role="status"
         className={cx(
-          'mb-3 min-h-12 border-2 px-3 py-2 text-slate-900',
+          'mb-6 min-h-12 border-2 px-3 py-2',
           !notification && 'invisible',
           notification?.type === 'error' && 'border-[#de4388] bg-[#e693b8]',
           notification?.type === 'success' && 'border-[#5f9939] bg-[#b7de9e]',
@@ -39,24 +39,24 @@ export function PhoneChecker() {
       >
         {notification?.text}
       </p>
-      <form onSubmit={handleSubmit} noValidate className="flex gap-3">
+      <form onSubmit={handleSubmit} noValidate className="flex gap-4 font-verdana">
         <input
           type="tel"
           aria-label="Phone number"
-          placeholder="+380*********"
+          placeholder="Type phone number in format +380*********"
           autoComplete="tel"
           value={phone}
           onChange={(event) => handleChange(event.target.value)}
           aria-invalid={notification?.type === 'error'}
           className={cx(
-            'h-12 min-w-0 flex-1 border-2 bg-white px-3 text-slate-900 outline-none',
+            'h-16 min-w-0 flex-1 border-2 bg-white px-1 text-lg outline-none sm:h-20 sm:text-[1.3rem]',
             notification?.type === 'error' ? 'border-[#de4388]' : 'border-black',
           )}
         />
         <button
           type="submit"
           disabled={!isValid}
-          className="h-12 w-20 cursor-pointer border-2 border-black bg-white text-slate-900 disabled:cursor-not-allowed disabled:border-slate-400 disabled:text-slate-400"
+          className="h-16 w-24 shrink-0 cursor-pointer border-2 border-black bg-[#e8e6eb] text-lg disabled:cursor-not-allowed disabled:text-[#8a8a8a] sm:h-20 sm:text-[1.3rem]"
         >
           Send
         </button>

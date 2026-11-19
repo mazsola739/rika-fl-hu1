@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { cx, Panel } from '../../components/ui'
+import { cx } from '../../components/ui'
 import { Basketball } from './Basketball'
 import { ColorTable } from './ColorTable'
 import { PhoneChecker } from './PhoneChecker'
 
 const tasks = [
-  { label: 'Table clicking', Component: ColorTable },
-  { label: 'Phone number checker', Component: PhoneChecker },
+  { label: 'Table-clicking', Component: ColorTable },
+  { label: 'Phonenumber checker', Component: PhoneChecker },
   { label: 'Basketball', Component: Basketball },
 ]
 
@@ -15,9 +15,14 @@ export default function DomEvents() {
   const ActiveTask = (tasks[active] ?? tasks[0])?.Component
 
   return (
-    <Panel>
-      <p className="mb-3 text-center font-semibold text-link">Rika’s playground</p>
-      <div role="tablist" className="mb-6 flex flex-wrap justify-center gap-1">
+    // The original page: mint, in Times New Roman, with "Rika's playground" over a turquoise tab
+    // bar. It stays light in the dark theme too, like the other original pages.
+    <div className="flex flex-col items-center overflow-hidden rounded-lg bg-[#dcfcf6] px-4 pt-6 pb-10 font-times text-black">
+      <p className="mb-7 text-[1.6rem]">Rika’s playground</p>
+      <div
+        role="tablist"
+        className="mb-12 flex flex-wrap justify-center gap-x-7 gap-y-1 bg-[#8eebdc] px-4 py-3 text-[1.35rem] sm:mb-16"
+      >
         {tasks.map((task, index) => (
           <button
             key={task.label}
@@ -26,19 +31,17 @@ export default function DomEvents() {
             aria-selected={index === active}
             onClick={() => setActive(index)}
             className={cx(
-              'cursor-pointer rounded-full px-4 py-1.5 text-sm font-semibold',
-              index === active
-                ? 'bg-accent text-white'
-                : 'text-link hover:bg-accent-soft dark:hover:bg-slate-800',
+              'cursor-pointer underline-offset-4 hover:underline',
+              index === active && 'underline',
             )}
           >
             {task.label}
           </button>
         ))}
       </div>
-      <div role="tabpanel" className="flex justify-center">
+      <div role="tabpanel" className="flex max-w-full justify-center">
         {ActiveTask && <ActiveTask />}
       </div>
-    </Panel>
+    </div>
   )
 }

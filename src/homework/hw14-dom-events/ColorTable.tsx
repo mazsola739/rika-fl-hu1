@@ -41,7 +41,13 @@ export function ColorTable() {
   }
 
   return (
-    <table className={cx('border-collapse text-slate-900', green && colorClass.green)}>
+    // The original look: a table with border="1", so every cell has a double border.
+    <table
+      className={cx(
+        'border-separate border-spacing-[2px] border border-black bg-white text-black',
+        green && colorClass.green,
+      )}
+    >
       <tbody>
         {Array.from({ length: ROWS }, (_, row) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: fixed-size grid, the index is the identity
@@ -57,9 +63,8 @@ export function ColorTable() {
                     data-color={color}
                     onClick={() => handleClick(row, column)}
                     className={cx(
-                      'size-24 cursor-pointer sm:size-36',
+                      'size-24 cursor-pointer text-[1.35rem] sm:size-40 md:size-[13.75rem]',
                       colorClass[color],
-                      isSpecial && 'font-semibold',
                     )}
                   >
                     {isSpecial ? 'Special cell' : 'Cell'}
