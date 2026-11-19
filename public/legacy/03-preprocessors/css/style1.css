@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .footer .footer_logo, .header .landing-logo {
   display: flex;
   align-items: flex-start;
@@ -232,4 +233,7 @@ mark {
 }
 .footer .footer-cr {
   font-family: "Hind", sans-serif;
+}
+.footer .footer-cr::after {
+  content: " · coded by Rika";
 }

@@ -1,6 +1,10 @@
-import { type FormEvent, useState } from 'react'
-import { Button, Output, Panel, TextField } from '../../components/ui'
+import { useState } from 'react'
+import { BrowserDialog } from '../../components/BrowserDialog'
+import { Panel } from '../../components/ui'
 import { checkBatteries, formatBatteryReport, getMiddle } from './logic'
+
+// Both tasks run like the original scripts: prompt() for every input, alert() for the result.
+// Cancel makes prompt() return null, which the validation treats as invalid input.
 
 export default function IntroToJs() {
   return (
@@ -11,62 +15,91 @@ export default function IntroToJs() {
   )
 }
 
-function BatteryCalculator() {
-  const [batteries, setBatteries] = useState('')
-  const [rate, setRate] = useState('')
-  const [result, setResult] = useState<string | null>(null)
+type BatteryStep =
+  | { step: 'batteries' }
+  | { step: 'rate'; batteries: string | null }
+  | { step: 'result'; message: string }
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault()
-    setResult(formatBatteryReport(checkBatteries(batteries, rate)))
+function BatteryCalculator() {
+  const [state, setState] = useState<BatteryStep>({ step: 'batteries' })
+  // The first prompt does not grab the focus on page load, only when the script starts again.
+  const [started, setStarted] = useState(false)
+
+  function report(batteries: string | null, rate: string | null) {
+    return formatBatteryReport(checkBatteries(batteries ?? '', rate ?? ''))
   }
 
   return (
     <Panel title="Task 1 – Defective batteries">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <TextField
-          label="Amount of batteries"
-          inputMode="decimal"
-          value={batteries}
-          onChange={(event) => setBatteries(event.target.value)}
+      {state.step === 'batteries' && (
+        <BrowserDialog
+          key="batteries"
+          kind="prompt"
+          call="prompt('Enter the amount of batteries')"
+          message="Enter the amount of batteries"
+          autoFocus={started}
+          onOk={(batteries) => setState({ step: 'rate', batteries })}
+          onCancel={() => setState({ step: 'rate', batteries: null })}
         />
-        <TextField
-          label="Defective rate (%)"
-          inputMode="decimal"
-          value={rate}
-          onChange={(event) => setRate(event.target.value)}
+      )}
+      {state.step === 'rate' && (
+        <BrowserDialog
+          key="rate"
+          kind="prompt"
+          call="prompt('Enter the percentage of defective batteries')"
+          message="Enter the percentage of defective batteries"
+          autoFocus
+          onOk={(rate) => setState({ step: 'result', message: report(state.batteries, rate) })}
+          onCancel={() => setState({ step: 'result', message: report(state.batteries, null) })}
         />
-        <Button type="submit" className="self-start">
-          Calculate
-        </Button>
-        {result && (
-          <Output tone={result === 'Invalid input data' ? 'error' : 'neutral'}>{result}</Output>
-        )}
-      </form>
+      )}
+      {state.step === 'result' && (
+        <BrowserDialog
+          key="result"
+          kind="alert"
+          call="alert(message)"
+          message={state.message}
+          autoFocus
+          onOk={() => {
+            setStarted(true)
+            setState({ step: 'batteries' })
+          }}
+        />
+      )}
     </Panel>
   )
 }
 
 function MiddleCharacter() {
-  const [word, setWord] = useState('')
   const [result, setResult] = useState<string | null>(null)
-
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault()
-    setResult(getMiddle(word))
-  }
+  const [started, setStarted] = useState(false)
 
   return (
     <Panel title="Task 2 – Middle character">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <TextField label="Word" value={word} onChange={(event) => setWord(event.target.value)} />
-        <Button type="submit" className="self-start">
-          Find the middle
-        </Button>
-        {result && (
-          <Output tone={result === 'Invalid value' ? 'error' : 'neutral'}>{result}</Output>
-        )}
-      </form>
+      {result === null ? (
+        <BrowserDialog
+          key="word"
+          kind="prompt"
+          call="prompt('Enter a word', 'Rika')"
+          message="Enter a word"
+          defaultValue="Rika"
+          autoFocus={started}
+          onOk={(word) => setResult(getMiddle(word))}
+          onCancel={() => setResult(getMiddle(''))}
+        />
+      ) : (
+        <BrowserDialog
+          key="result"
+          kind="alert"
+          call="alert(getMiddle(word))"
+          message={result}
+          autoFocus
+          onOk={() => {
+            setStarted(true)
+            setResult(null)
+          }}
+        />
+      )}
     </Panel>
   )
 }

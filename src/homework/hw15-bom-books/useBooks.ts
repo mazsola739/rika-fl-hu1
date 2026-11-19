@@ -68,5 +68,9 @@ export function useBooks() {
     return book
   }
 
-  return { books, saveBook }
+  function deleteBook(id: number) {
+    setBooks(books.filter((item) => item.id !== id))
+  }
+
+  return { books, saveBook, deleteBook }
 }

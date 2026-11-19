@@ -37,6 +37,9 @@ function useTree() {
   return context
 }
 
+/** The tree of the task with every folder open: it sets the size of the box. */
+const fullTree = buildTree(data)
+
 export default function FileTree() {
   const [nodes, setNodes] = useState(() => buildTree(data))
   // Open folders are kept by id, so a subfolder keeps its state while its parent is closed.
@@ -114,9 +117,12 @@ export default function FileTree() {
         <section
           aria-label="File tree"
           onContextMenu={openMenu}
-          className="mx-auto max-w-md rounded-lg bg-white px-6 py-5 text-slate-900 shadow-[0_0_15px_rgba(0,0,0,0.5)] select-none"
+          className="mx-auto grid max-w-md rounded-lg bg-white px-6 py-5 text-slate-900 shadow-[0_0_15px_rgba(0,0,0,0.5)] select-none"
         >
-          <TreeList nodes={nodes} />
+          <SizingTree nodes={fullTree} />
+          <div className="[grid-area:1/1]">
+            <TreeList nodes={nodes} />
+          </div>
         </section>
       </div>
 
@@ -274,5 +280,36 @@ function RenameInput({ node, onDone }: { node: TreeNode; onDone: (title: string 
       onBlur={(event) => finish(event.currentTarget.value)}
       className="min-w-0 flex-1 rounded border border-slate-400 px-1 text-slate-900"
     />
+  )
+}
+
+/**
+ * An invisible copy of the original tree with every folder open, in the same grid cell as the
+ * real one: the box always has the size it has with everything open, so it does not jump when
+ * folders open and close. The names come from CSS, so they are not text of the page.
+ */
+function SizingTree({ nodes, nested = false }: { nodes: readonly TreeNode[]; nested?: boolean }) {
+  return (
+    <ul
+      aria-hidden={nested ? undefined : true}
+      className={cx(nested ? 'pl-6' : 'invisible [grid-area:1/1]')}
+    >
+      {nodes.length === 0 ? (
+        <li
+          data-title="Folder is empty"
+          className="py-0.5 pl-8 italic after:content-[attr(data-title)]"
+        />
+      ) : (
+        nodes.map((node) => (
+          <li key={node.id}>
+            <div className="flex items-center gap-1 px-1 py-0.5">
+              <TreeIcon name="file" className="size-6 shrink-0" />
+              <span data-title={node.title} className="after:content-[attr(data-title)]" />
+            </div>
+            {node.isFolder && <SizingTree nodes={node.children} nested />}
+          </li>
+        ))
+      )}
+    </ul>
   )
 }

@@ -103,4 +103,35 @@ describe('Books', () => {
     await user.click(screen.getByRole('button', { name: 'Discard' }))
     expect(path()).toBe('/hw/15-bom-books/books/3')
   })
+
+  it('deletes a book after confirming, from localStorage too', async () => {
+    const user = userEvent.setup()
+    renderAt('/hw/15-bom-books/books/3/edit')
+
+    await user.click(screen.getByRole('button', { name: 'Delete book' }))
+    expect(screen.getByText('Delete “Life in EPAM”?')).toBeVisible()
+    await user.click(screen.getByRole('button', { name: 'Delete' }))
+
+    expect(path()).toBe('/hw/15-bom-books')
+    expect(screen.queryByRole('link', { name: 'Life in EPAM' })).not.toBeInTheDocument()
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]') as { title: string }[]
+    expect(stored.map((book) => book.title)).toEqual(['Harry Potter', 'How to Cook'])
+    await waitFor(() => expect(screen.getByText('Book successfully deleted')).toBeVisible())
+  })
+
+  it('keeps the book when the delete is not confirmed', async () => {
+    const user = userEvent.setup()
+    renderAt('/hw/15-bom-books/books/3/edit')
+
+    await user.click(screen.getByRole('button', { name: 'Delete book' }))
+    await user.click(screen.getByRole('button', { name: 'Keep it' }))
+
+    expect(path()).toBe('/hw/15-bom-books/books/3/edit')
+    expect(screen.getByRole('link', { name: 'Life in EPAM' })).toBeInTheDocument()
+  })
+
+  it('has no delete button when adding a book', () => {
+    renderAt('/hw/15-bom-books/books/new')
+    expect(screen.queryByRole('button', { name: 'Delete book' })).not.toBeInTheDocument()
+  })
 })

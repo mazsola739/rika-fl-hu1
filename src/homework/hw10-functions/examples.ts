@@ -28,5 +28,6 @@ export const examples: Example[] = [
   { call: "letterCount('Marry', 'r')", actual: letterCount('Marry', 'r'), expected: 2 },
   { call: "letterCount('Barny', 'y')", actual: letterCount('Barny', 'y'), expected: 1 },
   { call: "letterCount('', 'z')", actual: letterCount('', 'z'), expected: 0 },
+  { call: "letterCount('Rika', 'a')", actual: letterCount('Rika', 'a'), expected: 1 },
   { call: `countPoints(${JSON.stringify(scores)})`, actual: countPoints(scores), expected: 17 },
 ]

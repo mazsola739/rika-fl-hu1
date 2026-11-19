@@ -19,6 +19,8 @@ export const data: Entry[] = [
     children: [
       { title: 'logo.png' },
       { folder: true, title: 'English', children: [{ title: 'Present_Perfect.txt' }] },
+      // Easter egg, not part of the task's data.
+      { title: 'rika_was_here.txt' },
     ],
   },
   {

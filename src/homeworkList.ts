@@ -3,6 +3,11 @@ export interface LegacyPage {
   src: string
   /** Alternative stylesheets the page can be switched to (homework 03 has two themes). */
   themes?: { label: string; stylesheet: string }[]
+  /**
+   * The narrowest screen a desktop-only page was built for. Narrower previews lay it out at this
+   * width and scale it down instead of cutting it off. Responsive pages leave it out.
+   */
+  minWidth?: number
 }
 
 export interface Homework {
@@ -10,6 +15,8 @@ export interface Homework {
   slug: string
   title: string
   topic: string
+  /** Deadline on the original task sheet, as an ISO date. */
+  deadline: string
   summary: string
   /** The original requirements, in short. */
   task: string[]
@@ -23,6 +30,7 @@ export interface Homework {
 export const homeworkList: Homework[] = [
   {
     number: 1,
+    deadline: '2021-03-08',
     slug: '01-html-basics',
     title: 'HTML Basics',
     topic: 'HTML',
@@ -33,10 +41,11 @@ export const homeworkList: Homework[] = [
       'The markup has to pass the W3C validator.',
     ],
     kind: 'legacy',
-    legacy: { src: 'legacy/01-html-basics/index.html' },
+    legacy: { src: 'legacy/01-html-basics/index.html', minWidth: 980 },
   },
   {
     number: 2,
+    deadline: '2021-03-10',
     slug: '02-css-basics',
     title: 'CSS Basics',
     topic: 'CSS',
@@ -53,6 +62,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 3,
+    deadline: '2021-03-13',
     slug: '03-preprocessors',
     title: 'Preprocessors',
     topic: 'SCSS',
@@ -65,6 +75,7 @@ export const homeworkList: Homework[] = [
     kind: 'legacy',
     legacy: {
       src: 'legacy/03-preprocessors/index.html',
+      minWidth: 1240,
       themes: [
         { label: 'Day', stylesheet: 'css/style1.css' },
         { label: 'Night', stylesheet: 'css/style2.css' },
@@ -73,6 +84,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 4,
+    deadline: '2021-03-15',
     slug: '04-css-layouts',
     title: 'CSS Layouts',
     topic: 'CSS layout',
@@ -84,10 +96,11 @@ export const homeworkList: Homework[] = [
       'The e-mail address in the footer is a live mailto link with a hover state.',
     ],
     kind: 'legacy',
-    legacy: { src: 'legacy/04-css-layouts/index.html' },
+    legacy: { src: 'legacy/04-css-layouts/index.html', minWidth: 900 },
   },
   {
     number: 5,
+    deadline: '2021-03-17',
     slug: '05-responsive',
     title: 'Responsive',
     topic: 'Media queries',
@@ -103,6 +116,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 6,
+    deadline: '2021-03-22',
     slug: '06-bootstrap',
     title: 'CSS Frameworks',
     topic: 'Bootstrap',
@@ -117,6 +131,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 7,
+    deadline: '2021-03-24',
     slug: '07-intro-to-js',
     title: 'Intro to JS',
     topic: 'JavaScript basics',
@@ -128,10 +143,12 @@ export const homeworkList: Homework[] = [
       'Empty or whitespace-only input shows "Invalid value".',
     ],
     kind: 'react',
-    reactNotes: 'The original used prompt() and alert(); here both tasks are small forms.',
+    reactNotes:
+      'Still prompt() and alert(), but the windows are drawn in the page, so the two tasks run side by side.',
   },
   {
     number: 8,
+    deadline: '2021-03-27',
     slug: '08-quiz-game',
     title: 'Quiz game',
     topic: 'Debugging',
@@ -148,6 +165,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 9,
+    deadline: '2021-03-29',
     slug: '09-data-types',
     title: 'Data types',
     topic: 'Arrays, strings, dates',
@@ -161,6 +179,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 10,
+    deadline: '2021-03-31',
     slug: '10-functions',
     title: 'Functions',
     topic: 'Functions',
@@ -174,6 +193,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 11,
+    deadline: '2021-04-06',
     slug: '11-errors-storage',
     title: 'Errors and storage',
     topic: 'Errors, localStorage',
@@ -185,10 +205,11 @@ export const homeworkList: Homework[] = [
     ],
     kind: 'react',
     reactNotes:
-      'The pages of the visit counter are nested routes; the calculator uses a form instead of prompt(). No eval: expressions go through a small recursive descent parser.',
+      'The pages of the visit counter are nested routes; the prompt() and alert() windows are drawn in the page. No eval: expressions go through a small recursive descent parser.',
   },
   {
     number: 12,
+    deadline: '2021-04-09',
     slug: '12-dates-regex',
     title: 'Dates and regular expressions',
     topic: 'Date, RegExp',
@@ -202,6 +223,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 13,
+    deadline: '2021-04-12',
     slug: '13-dom-file-tree',
     title: 'DOM',
     topic: 'DOM',
@@ -217,6 +239,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 14,
+    deadline: '2021-04-14',
     slug: '14-dom-events',
     title: 'DOM events',
     topic: 'Events',
@@ -232,6 +255,7 @@ export const homeworkList: Homework[] = [
   },
   {
     number: 15,
+    deadline: '2021-04-17',
     slug: '15-bom-books',
     title: 'BOM',
     topic: 'History, localStorage',
@@ -243,7 +267,7 @@ export const homeworkList: Homework[] = [
     ],
     kind: 'react',
     reactNotes:
-      'Routes are books/:id, books/:id/edit and books/new instead of ?id=…#preview; the confirmation and success messages are modal dialogs.',
+      'Routes are books/:id, books/:id/edit and books/new instead of ?id=…#preview; the confirmation and success messages are modal dialogs. Extra, not in the task: a book can be deleted from its edit form.',
   },
 ]
 
@@ -253,4 +277,15 @@ export function findHomework(slug: string | undefined) {
 
 export function formatNumber(number: number) {
   return `HW ${String(number).padStart(2, '0')}`
+}
+
+/** A date as the task sheets write it: 08/03/2021. */
+export function formatDeadline(isoDate: string) {
+  const [year, month, day] = isoDate.split('-')
+  return `${day}/${month}/${year}`
+}
+
+/** The folder name of the homework in the course, as on its task sheet: FL1_HW7. */
+export function courseName(number: number) {
+  return `FL1_HW${number}`
 }

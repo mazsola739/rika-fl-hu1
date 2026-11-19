@@ -8,7 +8,7 @@ export function NotFoundPage() {
       <p className="mb-6 text-slate-600 dark:text-slate-300">
         There is no homework at this address.
       </p>
-      <Link to="/" className="font-semibold text-accent hover:underline">
+      <Link to="/" className="font-semibold text-link hover:underline">
         ← Back to all homework
       </Link>
     </section>

@@ -38,7 +38,7 @@ export function Button({ variant = 'primary', className, type = 'button', ...pro
         'inline-flex cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50',
         variant === 'primary' && 'bg-accent text-white hover:bg-accent-strong',
         variant === 'secondary' &&
-          'border border-accent text-accent hover:bg-accent-soft dark:hover:bg-slate-800',
+          'border border-accent text-link hover:bg-accent-soft dark:hover:bg-slate-800',
         variant === 'ghost' &&
           'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800',
         className,

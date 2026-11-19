@@ -16,6 +16,7 @@ export default function DomEvents() {
 
   return (
     <Panel>
+      <p className="mb-3 text-center font-semibold text-link">Rika’s playground</p>
       <div role="tablist" className="mb-6 flex flex-wrap justify-center gap-1">
         {tasks.map((task, index) => (
           <button
@@ -28,7 +29,7 @@ export default function DomEvents() {
               'cursor-pointer rounded-full px-4 py-1.5 text-sm font-semibold',
               index === active
                 ? 'bg-accent text-white'
-                : 'text-accent hover:bg-accent-soft dark:hover:bg-slate-800',
+                : 'text-link hover:bg-accent-soft dark:hover:bg-slate-800',
             )}
           >
             {task.label}

@@ -142,3 +142,8 @@ select:focus {
   border-color: #24d4d4;
   box-shadow: 0 0 0 0.2rem #24d4d4;
 }
+
+/* Easter egg: index.html could not be changed, so my name comes in through CSS. */
+.tm-copyright-text::after {
+  content: " · Styled by Rika";
+}

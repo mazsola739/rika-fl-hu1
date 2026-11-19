@@ -245,5 +245,10 @@ mark {
 
   .footer-cr {
     font-family: $articleFont;
+
+    // Easter egg: my name, in the day and the night theme too.
+    &::after {
+      content: ' · coded by Rika';
+    }
   }
 }

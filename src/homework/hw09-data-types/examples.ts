@@ -56,6 +56,7 @@ export const examples: Example[] = [
     expected: false,
   },
   { call: "flipOver('hey world')", actual: flipOver('hey world'), expected: 'dlrow yeh' },
+  { call: "flipOver('Rika')", actual: flipOver('Rika'), expected: 'akiR' },
   {
     call: 'makeListFromRange([2, 7])',
     actual: makeListFromRange([2, 7]),

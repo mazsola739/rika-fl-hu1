@@ -7,9 +7,13 @@ dist
 # Editor and OS files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 Thumbs.db
 
 # Local Claude Code settings
 .claude/
+
+# The original EPAM task PDFs: course material, kept locally only
+course-tasks/
