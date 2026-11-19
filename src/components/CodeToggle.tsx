@@ -1,6 +1,6 @@
 import { cx } from './ui'
 
-/** The `</>` button that opens or closes the code of a function. */
+/** The `</> Code` button that opens or closes the code of a function, with a turning arrow. */
 export function CodeToggleButton({
   name,
   open,
@@ -23,11 +23,19 @@ export function CodeToggleButton({
       title={label}
       onClick={onToggle}
       className={cx(
-        'cursor-pointer whitespace-nowrap rounded-md px-2 py-1 font-bold font-mono text-xs',
-        open ? 'bg-accent text-white' : 'text-link hover:bg-accent-soft dark:hover:bg-slate-800',
+        'inline-flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-0.5 font-sans font-semibold text-xs transition-colors',
+        open
+          ? 'border-accent bg-accent text-white'
+          : 'border-link text-link hover:bg-accent-soft dark:hover:bg-slate-800',
       )}
     >
-      {'</>'}
+      <span aria-hidden="true" className="font-mono">
+        {'</>'}
+      </span>
+      Code
+      <span aria-hidden="true" className={cx('transition-transform', open && 'rotate-90')}>
+        ▸
+      </span>
     </button>
   )
 }

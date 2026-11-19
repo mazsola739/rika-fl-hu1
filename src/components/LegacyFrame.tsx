@@ -2,8 +2,10 @@ import { type RefObject, useCallback, useEffect, useRef, useState } from 'react'
 import type { LegacyPage } from '../homeworkList'
 import { cx } from './ui'
 
+// Desktop is a real desktop width (the desktop breakpoint of the responsive homework, HW05),
+// not the width of the box: a narrower box shows it scaled down, like the other two.
 const DEVICES = [
-  { label: 'Desktop', width: undefined },
+  { label: 'Desktop', width: 1280 },
   { label: 'Tablet', width: 768 },
   { label: 'Mobile', width: 375 },
 ] as const
@@ -78,7 +80,7 @@ export function LegacyFrame({ page, title }: { page: LegacyPage; title: string }
     }
   }
 
-  // The page is laid out at the width of the chosen screen (the whole box on Desktop), but never
+  // The page is laid out at the width of the chosen screen, but never
   // narrower than it was built for: a desktop-only page is drawn at its own width and scaled down
   // to fit, the way a phone shows a desktop site. Wider screens than the box are scaled down too.
   const screenWidth = device.width ?? boxWidth

@@ -27,7 +27,9 @@ export function PhoneChecker() {
   }
 
   return (
-    <div className="w-full max-w-[32rem]">
+    // A set width: the tabs share one grid cell that shrinks to its content, so w-full would
+    // squeeze the field until its placeholder no longer fits.
+    <div className="w-[33rem] max-w-full">
       <p
         role="status"
         className={cx(
@@ -39,7 +41,7 @@ export function PhoneChecker() {
       >
         {notification?.text}
       </p>
-      <form onSubmit={handleSubmit} noValidate className="flex gap-4 font-verdana">
+      <form onSubmit={handleSubmit} noValidate className="flex gap-3 font-verdana">
         <input
           type="tel"
           aria-label="Phone number"
@@ -49,14 +51,14 @@ export function PhoneChecker() {
           onChange={(event) => handleChange(event.target.value)}
           aria-invalid={notification?.type === 'error'}
           className={cx(
-            'h-16 min-w-0 flex-1 border-2 bg-white px-1 text-lg outline-none sm:h-20 sm:text-[1.3rem]',
+            'h-14 min-w-0 flex-1 border-2 bg-white px-2 text-base outline-none',
             notification?.type === 'error' ? 'border-[#de4388]' : 'border-black',
           )}
         />
         <button
           type="submit"
           disabled={!isValid}
-          className="h-16 w-24 shrink-0 cursor-pointer border-2 border-black bg-[#e8e6eb] text-lg disabled:cursor-not-allowed disabled:text-[#8a8a8a] sm:h-20 sm:text-[1.3rem]"
+          className="h-14 w-20 shrink-0 cursor-pointer border-2 border-black bg-[#e8e6eb] text-base disabled:cursor-not-allowed disabled:text-[#8a8a8a]"
         >
           Send
         </button>

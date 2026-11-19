@@ -47,4 +47,10 @@ describe('LegacyFrame', () => {
     expect(frame.style.transform).toBe('')
     expect(screen.queryByText(/built for screens/)).not.toBeInTheDocument()
   })
+
+  it('lays a page out at a real desktop width on Desktop', () => {
+    render(<LegacyFrame page={{ src: 'legacy/page.html' }} title="Desktop" />)
+    expect(screen.getByRole('button', { name: 'Desktop' })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByTitle('Desktop').style.width).toBe('1280px')
+  })
 })
