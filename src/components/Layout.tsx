@@ -67,7 +67,7 @@ export function Layout() {
           </div>
           <p className="flex gap-4">
             <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer" className={footerLink}>
-              Portfolio
+              mazsola739
             </a>
             <a href={REPO_URL} target="_blank" rel="noreferrer" className={footerLink}>
               <GitHubIcon />

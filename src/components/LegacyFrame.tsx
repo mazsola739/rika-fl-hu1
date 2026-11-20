@@ -108,7 +108,7 @@ export function LegacyFrame({ page, title }: { page: LegacyPage; title: string }
           rel="noreferrer"
           className="ml-auto text-sm font-semibold text-link hover:underline"
         >
-          Open in a new tab ↗
+          Open in a new tab
         </a>
       </div>
 

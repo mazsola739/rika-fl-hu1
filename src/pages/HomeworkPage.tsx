@@ -62,7 +62,7 @@ export function HomeworkPage() {
                 className="inline-flex items-center gap-2 font-semibold text-link hover:underline"
               >
                 <FileTextIcon className="text-lg" />
-                Original task sheet ({courseName(homework.number)}.pdf) ↗
+                Original task sheet ({courseName(homework.number)}.pdf)
               </a>
             </p>
           )}
