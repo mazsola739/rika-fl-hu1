@@ -90,3 +90,7 @@ src/site.ts            portfolio and repository links
 scripts/thumbnails.ts  takes the card pictures
 course-tasks/          the original EPAM task sheets (PDF), linked from every homework
 ```
+
+## License
+
+The code is under the [MIT License](LICENSE). The original task sheets in `course-tasks/` belong to EPAM; the solutions are mine.
