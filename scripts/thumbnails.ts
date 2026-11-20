@@ -72,9 +72,10 @@ const setup: Record<string, (page: Page) => Promise<void>> = {
 
 async function openPage(options: Parameters<typeof browser.newPage>[0], path: string) {
   const page = await browser.newPage(options)
-  // Light is the default; the dark pictures need the dark theme saved, like after the switch.
+  // Light is the default; the dark pictures need the dark theme saved, like after the switch
+  // (THEME_STORAGE_KEY in src/components/ThemeToggle.tsx).
   if (options?.colorScheme === 'dark') {
-    await page.addInitScript(() => localStorage.setItem('theme', 'dark'))
+    await page.addInitScript(() => localStorage.setItem('rika-fl-hu1:theme', 'dark'))
   }
   await page.goto(new URL(path, base).href, { waitUntil: 'networkidle' })
   return page

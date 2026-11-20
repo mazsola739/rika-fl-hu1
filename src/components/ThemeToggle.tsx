@@ -3,8 +3,11 @@ import { MoonIcon, SunIcon } from './icons'
 
 type Theme = 'light' | 'dark'
 
-/** localStorage key of the visitor's choice; index.html reads the same key before the first paint. */
-export const THEME_STORAGE_KEY = 'theme'
+/**
+ * localStorage key of the visitor's choice; index.html reads the same key before the first paint.
+ * It names this site because every project page on mazsola739.github.io shares one localStorage.
+ */
+export const THEME_STORAGE_KEY = 'rika-fl-hu1:theme'
 
 const readTheme = (): Theme =>
   document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
