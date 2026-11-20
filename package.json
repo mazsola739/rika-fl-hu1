@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "EPAM Front-end Lab (FL-HU1) homework collection, rebuilt as a React app",
+  "description": "Front-end Lab (FL-HU1) homework collection, rebuilt as a React app",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -62,7 +62,7 @@ export function Layout() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-2">
             <CourseMark />
-            <p>© 2020–2026 Rika · The tasks are EPAM’s, the solutions are mine.</p>
+            <p>© 2020–2026 Rika · The tasks are the course’s, the solutions are mine.</p>
             <p>Made in 2020–2021, renovated in 2026.</p>
           </div>
           <p className="flex gap-4">

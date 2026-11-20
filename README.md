@@ -1,7 +1,7 @@
 # FL-HU1 – Front-end Lab homework
 
 My first bigger learning project: the homework of the EPAM Front-end Lab (FL-HU1, 2020–2021), the course
-where EPAM's trainers taught me front-end development. The 15 tasks are EPAM's, the solutions are mine,
+where I learned front-end development. The 15 tasks are the course's, the solutions are mine,
 collected into one React app and renovated in 2026.
 
 **Live site:** https://mazsola739.github.io/rika-fl-hu1/
@@ -73,7 +73,7 @@ Actions**.
 
 ## Original task sheets
 
-The original task sheets of the course (EPAM's material) are in `course-tasks/` (`FL1_HW01.pdf` …
+The original task sheets of the course are in `course-tasks/` (`FL1_HW01.pdf` …
 `FL1_HW15.pdf`), and every homework page links its own sheet.
 
 ## Project structure
@@ -88,7 +88,7 @@ src/pages/             home, homework and not found pages
 src/assets/thumbnails/ card pictures of the home page
 src/site.ts            portfolio and repository links
 scripts/thumbnails.ts  takes the card pictures
-course-tasks/          the original EPAM task sheets (PDF), linked from every homework
+course-tasks/          the original task sheets (PDF), linked from every homework
 ```
 
 ## License

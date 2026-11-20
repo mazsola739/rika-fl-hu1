@@ -36,14 +36,14 @@ export function HomePage() {
 
       {/* The cover sheet, in the style of the course's task sheets. */}
       <Sheet className="mb-12">
-        <SheetTitle overline="EPAM Front-end Lab · FL-HU1">Front-end Lab homework</SheetTitle>
+        <SheetTitle overline="Front-end Lab · FL-HU1">Front-end Lab homework</SheetTitle>
         <Deadline label="DEADLINES:">
           {formatDeadline(first.deadline)} – {formatDeadline(last.deadline)}
         </Deadline>
         <p className="mt-6 max-w-3xl text-lg text-slate-700 dark:text-slate-300">
-          My first bigger learning project: the homework of the EPAM Front-end Lab (FL-HU1,
-          2020–2021), the course where EPAM’s trainers taught me front-end development. Their 15
-          tasks go from HTML basics to routing with the History API; the solutions are mine.
+          My first bigger learning project: the homework of Front-end Lab (FL-HU1, 2020–2021), the
+          course where I learned front-end development. Its 15 tasks go from HTML basics to routing
+          with the History API; the solutions are mine.
         </p>
       </Sheet>
 
