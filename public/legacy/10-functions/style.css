@@ -1,0 +1,154 @@
+/*
+ * In the style of the course's task sheets (Frontend Lab) and of this site: Calibri, cyan headings,
+ * a light window with a thin frame, and the results in a plain list.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #0f7c90;
+  --heading: #1f8fa5;
+  --line: #d5dde4;
+  --muted: #5f6b76;
+  --pass: #1d7a2e;
+  --fail: #c01f3c;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f1f4f7;
+  color: #222;
+  font-family: Calibri, Carlito, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.desktop {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.window {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 6%);
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px 8px 16px;
+  background-color: var(--heading);
+  color: #fff;
+}
+
+.title-bar-text {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* The minimize, maximize and close buttons of a dialog: only a reminder, they do nothing. */
+.title-bar-buttons {
+  display: flex;
+  gap: 6px;
+  color: rgb(255 255 255 / 75%);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.window-body {
+  padding: 16px;
+}
+
+.window-body > p {
+  margin: 0 0 12px;
+}
+
+code,
+.results td {
+  font-family: "Courier New", Courier, monospace;
+}
+
+code {
+  font-weight: bold;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.results {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.results th,
+.results td {
+  padding: 6px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.results thead th {
+  border-bottom: 1px solid var(--line);
+  background-color: #f4f7f9;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.results tbody th,
+.results td {
+  border-bottom: 1px solid #edf1f4;
+}
+
+.results tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.results tbody th {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: normal;
+  overflow-wrap: anywhere;
+}
+
+.results tbody tr:hover {
+  background-color: #e6f4f7;
+}
+
+.results code {
+  font-weight: normal;
+  overflow-wrap: anywhere;
+}
+
+.lead {
+  color: var(--muted);
+}
+
+.status {
+  font-family: Calibri, Carlito, "Segoe UI", sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status--pass {
+  color: var(--pass);
+}
+
+.status--fail {
+  color: var(--fail);
+}

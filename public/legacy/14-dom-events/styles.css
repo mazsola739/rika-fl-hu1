@@ -1,0 +1,286 @@
+/* The look of the task sheet's samples (plain colors on a white page), with my tabs for the three tasks. */
+
+:root {
+  --yellow: #ffff00;
+  --blue: #0000ff;
+  --green: #008000;
+  --error: #ff8080;
+  --invalid: #ff0000;
+  --disabled: #a5a5a5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.playground {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 40px;
+}
+
+.playground__title {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+  background-color: rgb(140 233 219);
+}
+
+.tabs__button {
+  padding: 10px;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+}
+
+.tabs__button:hover {
+  background-color: rgb(99 223 204);
+}
+
+.tabs__button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.task {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task[hidden] {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* START: Task 1 Styles */
+
+.color-table {
+  border: 2px solid var(--green);
+  border-collapse: separate;
+  border-spacing: 2px;
+  background-color: #fff;
+}
+
+.color-table--green {
+  background-color: var(--green);
+}
+
+.color-table td {
+  padding: 0;
+  border: 1px solid #000;
+}
+
+.color-table__cell {
+  display: block;
+  width: clamp(72px, 26vw, 92px);
+  aspect-ratio: 1;
+  padding: 0 0 0 20px;
+  border: 0;
+  color: #000;
+  cursor: pointer;
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+}
+
+.color-table__cell[data-color="white"] {
+  background-color: #fff;
+}
+
+.color-table__cell[data-color="green"] {
+  background-color: var(--green);
+}
+
+.color-table__cell[data-color="blue"] {
+  background-color: var(--blue);
+}
+
+.color-table__cell[data-color="yellow"] {
+  background-color: var(--yellow);
+}
+
+/* END: Task 1 Styles */
+
+/* START: Task 2 Styles */
+
+.notification {
+  width: 100%;
+  max-width: 332px;
+  margin: 0 0 10px;
+  padding: 14px 16px;
+  border: 1px solid #777;
+  color: #fff;
+  font-size: 16px;
+}
+
+.notification--error {
+  background-color: var(--error);
+}
+
+.notification--success {
+  border-color: var(--green);
+  background-color: var(--green);
+}
+
+.phone-form {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  max-width: 332px;
+}
+
+.phone-form__input {
+  min-width: 0;
+  height: 36px;
+  flex: 1;
+  padding: 0 10px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.phone-form__input::placeholder {
+  font-size: 10px;
+}
+
+.phone-form__input--invalid {
+  border-color: var(--invalid);
+}
+
+.phone-form__button {
+  height: 36px;
+  padding: 0 8px;
+  border: 1px solid #767676;
+  border-radius: 6px;
+  background-color: #efefef;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.phone-form__button:disabled {
+  border-color: #ddd;
+  color: var(--disabled);
+  cursor: not-allowed;
+}
+
+/* END: Task 2 Styles */
+
+/* START: Task 3 Styles */
+
+/* The court scales down on narrow screens: every position inside is in percent of 600×330. */
+.court {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 600 / 330;
+  cursor: pointer;
+}
+
+.court__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.court__ball {
+  position: absolute;
+  top: calc(145 / 330 * 100%);
+  left: calc(280 / 600 * 100%);
+  width: calc(40 / 600 * 100%);
+  height: calc(40 / 330 * 100%);
+  pointer-events: none;
+  transition:
+    left 1s,
+    top 1s;
+}
+
+.court__zone {
+  position: absolute;
+  top: calc(156 / 330 * 100%);
+  width: calc(15 / 600 * 100%);
+  height: calc(15 / 330 * 100%);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.court__zone--left {
+  left: calc(31 / 600 * 100%);
+}
+
+.court__zone--right {
+  right: calc(32 / 600 * 100%);
+}
+
+.scoreboard {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  max-width: 600px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.scoreboard__team {
+  margin: 6px 0 0;
+}
+
+.score-alert {
+  width: 100%;
+  max-width: 600px;
+  min-height: 1.5em;
+  margin: 24px 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.score-alert--visible {
+  opacity: 1;
+}
+
+.score-alert[data-team="A"] {
+  color: var(--blue);
+}
+
+.score-alert[data-team="B"] {
+  color: var(--invalid);
+}
+
+/* END: Task 3 Styles */

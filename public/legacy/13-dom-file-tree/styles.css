@@ -1,0 +1,136 @@
+/* The look of the task sheet's sample: a white card with a soft shadow on a white page. */
+
+:root {
+  --folder: #f0b400;
+  --file: #a5a5a5;
+  --hover: #e1f3fd;
+  --focus: #c9e8fb;
+  --menu-hover: #e1f3fd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px 16px;
+  background-color: #fff;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.file-tree {
+  width: min(100%, 400px);
+  margin: 0 auto;
+  padding: 24px 16px 24px 56px;
+  border-radius: 3px;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 45%);
+  user-select: none;
+}
+
+.tree {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tree--nested {
+  padding-left: 40px;
+}
+
+.tree-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+button.tree-row {
+  cursor: pointer;
+}
+
+.tree-row:hover {
+  background-color: var(--hover);
+}
+
+.tree-row.is-focused {
+  background-color: var(--focus);
+}
+
+.tree-row:focus-visible {
+  outline: 1px dotted #333;
+}
+
+.tree-icon {
+  flex-shrink: 0;
+  font-size: 22px;
+}
+
+.tree-icon--folder {
+  color: var(--folder);
+}
+
+.tree-icon--file {
+  color: var(--file);
+}
+
+.tree-rename {
+  min-width: 0;
+  flex: 1;
+  padding: 0 2px;
+  border: 2px solid #333;
+  border-radius: 3px;
+  font: inherit;
+}
+
+.tree-empty {
+  padding: 2px 0 2px 32px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.context-menu {
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  width: 140px;
+  flex-direction: column;
+  padding: 4px 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 30%);
+}
+
+.context-menu[hidden] {
+  display: none;
+}
+
+.context-menu__item {
+  padding: 4px 12px;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.context-menu__item:hover:not(:disabled) {
+  background-color: var(--menu-hover);
+}
+
+.context-menu__item:disabled {
+  color: #a5a5a5;
+  cursor: default;
+}

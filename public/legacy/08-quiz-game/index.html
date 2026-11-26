@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rika's HW 8 – Millionaire quiz</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <header class="controls">
+      <button class="btn js-start" type="button">Start new game</button>
+      <button class="btn js-skip" type="button" hidden>Skip question</button>
+    </header>
+
+    <main class="game">
+      <div class="message js-opening">
+        <h1 class="title">Welcome to Rika's "Who Wants to Be a Millionaire?" game!</h1>
+      </div>
+
+      <div class="message js-end" hidden>
+        <p class="title js-end-title"></p>
+        <p class="subtitle js-end-subtitle"></p>
+      </div>
+
+      <section class="js-question-box" aria-live="polite" hidden>
+        <p class="title js-question"></p>
+        <div class="answers js-answers">
+          <button class="answer js-answer" type="button" data-index="0"></button>
+          <button class="answer js-answer" type="button" data-index="1"></button>
+          <button class="answer js-answer" type="button" data-index="2"></button>
+          <button class="answer js-answer" type="button" data-index="3"></button>
+        </div>
+      </section>
+
+      <div class="prizes js-prizes" hidden>
+        <p class="js-total"></p>
+        <p class="js-current"></p>
+      </div>
+    </main>
+  </body>
+</html>

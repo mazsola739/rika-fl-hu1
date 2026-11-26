@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 14 - JS DOM Events</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="index.js"></script>
+  </head>
+  <body>
+    <main class="playground">
+      <h1 class="playground__title">Rika's playground</h1>
+      <nav class="tabs" aria-label="Tasks">
+        <button type="button" class="tabs__button" data-task="task-table" aria-pressed="true">
+          Table-clicking
+        </button>
+        <button type="button" class="tabs__button" data-task="task-phone" aria-pressed="false">
+          Phonenumber checker
+        </button>
+        <button type="button" class="tabs__button" data-task="task-basketball" aria-pressed="false">
+          Basketball
+        </button>
+      </nav>
+
+      <!-- TEMPLATE FOR TASK 1 GOES HERE -->
+      <section class="task" id="task-table" aria-label="Table-clicking">
+        <table class="color-table">
+          <tbody>
+            <tr>
+              <td><button type="button" class="color-table__cell">Cell</button></td>
+              <td><button type="button" class="color-table__cell">Cell</button></td>
+              <td><button type="button" class="color-table__cell">Cell</button></td>
+            </tr>
+            <tr>
+              <td><button type="button" class="color-table__cell">Cell</button></td>
+              <td>
+                <button type="button" class="color-table__cell" data-special="true">
+                  Special cell
+                </button>
+              </td>
+              <td><button type="button" class="color-table__cell">Cell</button></td>
+            </tr>
+            <tr>
+              <td><button type="button" class="color-table__cell">Cell</button></td>
+              <td><button type="button" class="color-table__cell">Cell</button></td>
+              <td><button type="button" class="color-table__cell">Cell</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- TEMPLATE FOR TASK 2 GOES HERE -->
+      <section class="task" id="task-phone" aria-label="Phonenumber checker" hidden>
+        <p class="notification" id="phone-notification" role="status" hidden></p>
+        <form class="phone-form" id="phone-form" novalidate>
+          <label class="visually-hidden" for="phone">Phone number</label>
+          <input
+            type="tel"
+            class="phone-form__input"
+            id="phone"
+            name="phone"
+            autocomplete="tel"
+            placeholder="Type phone number in format +380*********"
+          />
+          <button type="submit" class="phone-form__button" disabled>Send</button>
+        </form>
+      </section>
+
+      <!-- TEMPLATE FOR TASK 3 GOES HERE -->
+      <section class="task" id="task-basketball" aria-label="Basketball" hidden>
+        <div class="court" id="court">
+          <img class="court__image" src="assets/court.png" alt="Basketball court" />
+          <img class="court__ball" id="ball" src="assets/ball.png" alt="Ball" />
+          <!-- Team B scores on the left hoop, team A on the right one. -->
+          <button
+            type="button"
+            class="court__zone court__zone--left"
+            data-team="B"
+            aria-label="Scoring zone of team B"
+          ></button>
+          <button
+            type="button"
+            class="court__zone court__zone--right"
+            data-team="A"
+            aria-label="Scoring zone of team A"
+          ></button>
+        </div>
+        <div class="scoreboard">
+          <p class="scoreboard__team">Team A:<span id="score-A">0</span></p>
+          <p class="scoreboard__team">Team B:<span id="score-B">0</span></p>
+        </div>
+        <p class="score-alert" id="score-alert" role="status"></p>
+      </section>
+    </main>
+  </body>
+</html>

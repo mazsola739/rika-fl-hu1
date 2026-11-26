@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dates and regular expressions</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <main class="desktop">
+      <section class="window" aria-labelledby="window-title">
+        <div class="title-bar">
+          <h1 class="title-bar-text" id="window-title">Dates and regular expressions</h1>
+          <span class="title-bar-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></span>
+        </div>
+        <div class="window-body">
+          <p class="lead">
+            The examples of the task sheet. The rows marked with – depend on today's date.
+          </p>
+          <div class="table-wrapper">
+            <table class="results">
+              <thead>
+                <tr>
+                  <th scope="col">Call</th>
+                  <th scope="col">Result</th>
+                  <th scope="col">OK</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <h2 class="subtitle">Playground</h2>
+          <form class="playground">
+            <label class="playground__field">
+              Function
+              <select name="validator">
+                <option value="isValidIdentifier">isValidIdentifier</option>
+                <option value="capitalize">capitalize</option>
+                <option value="isValidAudioFile">isValidAudioFile</option>
+                <option value="getHexadecimalColors">getHexadecimalColors</option>
+                <option value="isValidPassword">isValidPassword</option>
+                <option value="addThousandsSeparators">addThousandsSeparators</option>
+              </select>
+            </label>
+            <label class="playground__field">
+              Input
+              <input name="input" type="text" value="Rika" autocomplete="off" spellcheck="false" />
+            </label>
+            <p class="playground__output">
+              <code class="playground__call"></code> →
+              <output name="result" class="playground__result"></output>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

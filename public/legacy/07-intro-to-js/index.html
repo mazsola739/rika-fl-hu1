@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rika's HW 7 – Intro to JS</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <main class="desktop">
+      <header class="desktop-header">
+        <h1 class="desktop-title">Intro to JS</h1>
+        <p class="desktop-intro">
+          Both tasks talk to you with <code>prompt()</code> and <code>alert()</code>. Press a start
+          button and Rika does the math.
+        </p>
+      </header>
+
+      <section class="window" aria-labelledby="batteries-title">
+        <div class="title-bar">
+          <h2 class="title-bar-text" id="batteries-title">Task 1 – Defective batteries</h2>
+          <span class="title-bar-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></span>
+        </div>
+        <div class="window-body">
+          <p>
+            Enter the amount of batteries and the percentage of defective ones to get the
+            defective and working batteries.
+          </p>
+          <div class="console">
+            <p class="console-line">C:\RIKA&gt; batteries.exe</p>
+            <output class="console-output js-batteries-result" aria-live="polite"></output>
+          </div>
+          <button class="button js-start-batteries" type="button">Start task 1</button>
+        </div>
+      </section>
+
+      <section class="window" aria-labelledby="middle-title">
+        <div class="title-bar">
+          <h2 class="title-bar-text" id="middle-title">Task 2 – Middle character</h2>
+          <span class="title-bar-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></span>
+        </div>
+        <div class="window-body">
+          <p>
+            Enter a word to get its middle character (or the middle two characters of an even
+            word).
+          </p>
+          <div class="console">
+            <p class="console-line">C:\RIKA&gt; middle.exe</p>
+            <output class="console-output js-middle-result" aria-live="polite"></output>
+          </div>
+          <button class="button js-start-middle" type="button">Start task 2</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
